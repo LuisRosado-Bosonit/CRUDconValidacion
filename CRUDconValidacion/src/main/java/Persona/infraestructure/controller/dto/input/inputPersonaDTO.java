@@ -1,4 +1,4 @@
-package Persona.infraestructure.controller.dto;
+package Persona.infraestructure.controller.dto.input;
 
 import Persona.domain.Persona;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.Date;
 @Slf4j
 @Data
 @AllArgsConstructor
-public class PersonaDTO {
+public class inputPersonaDTO {
     //private Logger log =  LoggerFactory.getLogger(PersonaDTO.class);
     private int id_persona;
     private String usuario;
@@ -46,7 +46,7 @@ public class PersonaDTO {
         return mariano;
     }
 
-    private boolean algunoNulo(PersonaDTO dto){
+    private boolean algunoNulo(inputPersonaDTO dto){
         if(dto.getPassword() == null ||
                 dto.getName() == null ||
                 dto.getCompany_email() == null ||

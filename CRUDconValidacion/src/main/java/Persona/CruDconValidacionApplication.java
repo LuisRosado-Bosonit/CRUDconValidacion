@@ -1,4 +1,4 @@
-package com.example.CRUDconValidacion;
+package Persona;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

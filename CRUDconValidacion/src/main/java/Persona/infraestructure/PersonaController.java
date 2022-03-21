@@ -1,17 +1,13 @@
 package Persona.infraestructure;
 
 import Persona.domain.Persona;
-import Persona.domain.repository.PersonaRepository;
 import Persona.domain.repository.PersonaServiceImpl;
-import Persona.infraestructure.controller.dto.PersonaDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import Persona.infraestructure.controller.dto.output.outputPersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PersonaController  {
@@ -29,10 +25,8 @@ public class PersonaController  {
     }
 
     @PostMapping("persona")
-    public Persona addPerson(@RequestBody PersonaDTO dto) throws Exception {
-        Persona actual = dto.transformDTOtoPersona();
-        persona.guardarPersona(actual);
-        return actual;
+    public inputPersonaDTO addPerson(@RequestBody inputPersonaDTO dto) throws Exception {
+        return persona.guardarPersona(dto);
     }     
 
     @GetMapping("persona/getAll")

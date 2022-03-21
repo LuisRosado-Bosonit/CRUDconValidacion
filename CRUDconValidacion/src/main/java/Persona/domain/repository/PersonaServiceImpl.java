@@ -1,6 +1,8 @@
 package Persona.domain.repository;
 
 import Persona.domain.Persona;
+import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import Persona.infraestructure.controller.dto.output.outputPersonaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +25,10 @@ public class PersonaServiceImpl implements PersonaService {
         return repositorio.findByUsuario(nombre);
     }
 
-    public void guardarPersona(Persona p){
+    public inputPersonaDTO guardarPersona(inputPersonaDTO dto) throws Exception {
+        repositorio.save(dto.transformDTOtoPersona());
         log.warn("--------- Se ha añadido un nuevo usuario a la base de datos ---------");
-        repositorio.save(p);
+        return dto;
     }
 
     public List<Persona> showAll(){
