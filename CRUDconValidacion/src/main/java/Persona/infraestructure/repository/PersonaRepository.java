@@ -1,4 +1,4 @@
-package Persona.domain.repository;
+package Persona.infraestructure.repository;
 
 import Persona.domain.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,9 +1,8 @@
 package Persona.infraestructure;
 
 import Persona.domain.Persona;
-import Persona.domain.repository.PersonaServiceImpl;
+import Persona.infraestructure.repository.PersonaServiceImpl;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
-import Persona.infraestructure.controller.dto.output.outputPersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

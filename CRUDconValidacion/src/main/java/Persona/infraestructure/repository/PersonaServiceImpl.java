@@ -1,8 +1,7 @@
-package Persona.domain.repository;
+package Persona.infraestructure.repository;
 
 import Persona.domain.Persona;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
-import Persona.infraestructure.controller.dto.output.outputPersonaDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
