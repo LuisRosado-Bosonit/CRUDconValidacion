@@ -1,14 +1,17 @@
 package Persona.infraestructure;
 
+import Persona.Errors.CustomizeNotFoundException;
 import Persona.domain.Persona;
 import Persona.infraestructure.repository.PersonaService;
 import Persona.infraestructure.repository.PersonaServiceImpl;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,7 @@ public class PersonaController  {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("persona/{ID}")
     public ResponseEntity<Persona> buscarPorID(@PathVariable String ID){
+        //if(persona.findById(ID) == null) return CustomizeNotFoundException(ChangeSetPersister.NotFoundException() );
         if(persona.findById(ID) == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(persona.findById(ID));
         return ResponseEntity.status(HttpStatus.OK).body(persona.findById(ID));
     }
