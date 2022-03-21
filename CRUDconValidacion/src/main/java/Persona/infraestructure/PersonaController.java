@@ -1,6 +1,7 @@
 package Persona.infraestructure;
 
 import Persona.domain.Persona;
+import Persona.infraestructure.repository.PersonaService;
 import Persona.infraestructure.repository.PersonaServiceImpl;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 @RestController
 public class PersonaController  {
     @Autowired
-    PersonaServiceImpl persona;
+    PersonaService persona;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("persona/{ID}")
