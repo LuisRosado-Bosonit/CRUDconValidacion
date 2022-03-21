@@ -1,4 +1,4 @@
-package com.example.CRUDconValidacion.Persona.domain;
+package Persona.domain;
 
 import lombok.Data;
 

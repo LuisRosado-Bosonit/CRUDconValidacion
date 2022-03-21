@@ -1,11 +1,9 @@
-package com.example.CRUDconValidacion.Persona.infraestructure.controller.dto;
+package Persona.infraestructure.controller.dto;
 
-import com.example.CRUDconValidacion.Persona.domain.Persona;
+import Persona.domain.Persona;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Date;
 
