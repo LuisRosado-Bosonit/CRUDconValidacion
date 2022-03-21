@@ -20,13 +20,13 @@ public class PersonaController  {
     private Logger log = LoggerFactory.getLogger(PersonaController.class);
 
 
-    @GetMapping("persona/getByID")
-    public Persona  buscarPorID(@RequestParam String ID){
+    @GetMapping("persona/{ID}")
+    public Persona  buscarPorID(@PathVariable String ID){
 
         Optional<Persona> resultado = persona.findById(ID);
         if(resultado.isEmpty())
             log.info("--------- Una consulta por ID no ha devuelto ningún resultado ---------");
-        return resultado.get();
+        return resultado.orElseThrow();
     }
 
     @GetMapping("persona/getByUser")
@@ -37,7 +37,7 @@ public class PersonaController  {
         return lista;
     }
 
-    @PutMapping("persona/add")
+    @PostMapping("persona")
     public Persona addPerson(@RequestBody PersonaDTO dto) throws Exception {
         Persona actual = dto.transformDTOtoPersona();
         persona.save(actual);
