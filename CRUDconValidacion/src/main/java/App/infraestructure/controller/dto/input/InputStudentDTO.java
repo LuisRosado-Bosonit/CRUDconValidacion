@@ -1,7 +1,7 @@
 package App.infraestructure.controller.dto.input;
 
 import App.domain.Student;
-import App.infraestructure.repository.PersonaService;
+import App.infraestructure.Services.PersonaService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 

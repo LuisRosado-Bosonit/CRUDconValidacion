@@ -1,7 +1,7 @@
 package App.infraestructure;
 
 import App.domain.Persona;
-import App.infraestructure.repository.PersonaService;
+import App.infraestructure.Services.PersonaService;
 import App.infraestructure.controller.dto.input.inputPersonaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
