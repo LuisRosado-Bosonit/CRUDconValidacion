@@ -46,7 +46,7 @@ public class Student {
     private String coments;
 
     @Column
-            @OneToOne
+            @ManyToOne
             @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 
@@ -54,7 +54,11 @@ public class Student {
             @NotNull(message = "Se debe especificar una rama principal para cada estudiante")
     private String Branch;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "cursando_asignatura",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "id_asignatura"))
     private List<Estudiante_asignatura> asignaturas;
 
 }

@@ -2,12 +2,14 @@ package Profesor.domain;
 
 import Persona.domain.Persona;
 import Student.Utils.StringPrefixedSequenceIdGenerator;
+import Student.domain.Student;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Data
@@ -38,4 +40,7 @@ public class Profesor {
     @Column
             @NotNull(message = "Es necesario agregar una materia impartida a cada profesor")
     private String branch;
+
+    @OneToMany
+    private List<Student> estudiantes;
 }

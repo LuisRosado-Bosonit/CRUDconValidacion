@@ -29,9 +29,9 @@ public class Estudiante_asignatura {
     private String id_asignatura;
 
     @Column
-            @ManyToOne()
+            @ManyToMany(mappedBy = "asignaturas")
             @JoinColumn(name = "id_student")
-    private Student estudiantes;
+    private List<Student> estudiantes;
 
     @Column
     private String asignatura;
