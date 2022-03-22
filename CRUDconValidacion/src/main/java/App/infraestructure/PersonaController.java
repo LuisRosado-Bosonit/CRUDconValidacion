@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class PersonaController  {
     @Autowired
-    PersonaService persona;
+    PersonaService persona;   //Es una mala práctica ??
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("persona/{ID}")
