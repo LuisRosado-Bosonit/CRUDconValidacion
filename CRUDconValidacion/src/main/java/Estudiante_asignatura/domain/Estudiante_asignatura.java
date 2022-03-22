@@ -1,22 +1,18 @@
-package Student.domain;
+package Estudiante_asignatura.domain;
 
-import Estudiante_asignatura.domain.Estudiante_asignatura;
-import Persona.domain.Persona;
-import Profesor.domain.Profesor;
 import Student.Utils.StringPrefixedSequenceIdGenerator;
+import Student.domain.Student;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@EqualsAndHashCode
 @Data
-public class Student {
+public class Estudiante_asignatura {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ausencias_seq")
     @GenericGenerator(
@@ -29,32 +25,22 @@ public class Student {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value =
                             "%08d")
             } )
-    @Column(name = "id_student", nullable = false)
-    private String id_student;
+    @Column(name = "id_asignatura", nullable = false)
+    private String id_asignatura;
 
     @Column
-            @OneToOne
-            @JoinColumn(name = "id_persona")
-    private Persona persona;
-
-
-    @Column
-    @NotNull(message = "Es necesario especificar el número de horas semanales")
-    private int num_hours_week;
+            @ManyToOne()
+            @JoinColumn(name = "id_student")
+    private Student estudiantes;
 
     @Column
-    private String coments;
+    private String asignatura;
 
     @Column
-            @OneToOne
-            @JoinColumn(name = "id_profesor")
-    private Profesor profesor;
+            @NotNull(message = "Se debe especificar una fecha de inicio para las entidades del tipo Estudiante_asignatura")
+    private Date initial_date;
 
     @Column
-            @NotNull(message = "Se debe especificar una rama principal para cada estudiante")
-    private String Branch;
-
-    @OneToMany
-    private List<Estudiante_asignatura> asignaturas;
-
+    private Date finish_date;
 }
+
