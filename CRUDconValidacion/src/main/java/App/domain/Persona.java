@@ -1,4 +1,4 @@
-package Persona.domain;
+package App.domain;
 
 import lombok.Data;
 

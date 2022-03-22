@@ -1,6 +1,6 @@
-package Persona.infraestructure.controller.dto.input;
+package App.infraestructure.controller.dto.input;
 
-import Persona.domain.Persona;
+import App.domain.Persona;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

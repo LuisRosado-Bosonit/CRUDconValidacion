@@ -1,7 +1,7 @@
-package Persona.infraestructure.repository;
+package App.infraestructure.repository;
 
-import Persona.domain.Persona;
-import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import App.domain.Persona;
+import App.infraestructure.controller.dto.input.inputPersonaDTO;
 
 import java.util.List;
 

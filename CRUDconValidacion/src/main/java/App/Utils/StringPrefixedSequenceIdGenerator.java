@@ -1,4 +1,4 @@
-package Student.Utils;
+package App.Utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

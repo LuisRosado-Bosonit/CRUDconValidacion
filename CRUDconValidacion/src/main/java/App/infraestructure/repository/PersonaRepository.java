@@ -1,6 +1,6 @@
-package Persona.infraestructure.repository;
+package App.infraestructure.repository;
 
-import Persona.domain.Persona;
+import App.domain.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

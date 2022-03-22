@@ -1,7 +1,6 @@
-package Estudiante_asignatura.domain;
+package App.domain;
 
-import Student.Utils.StringPrefixedSequenceIdGenerator;
-import Student.domain.Student;
+import App.Utils.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 

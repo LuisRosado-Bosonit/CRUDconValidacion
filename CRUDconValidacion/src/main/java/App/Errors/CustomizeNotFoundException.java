@@ -1,4 +1,4 @@
-package Persona.Errors;
+package App.Errors;
 
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;

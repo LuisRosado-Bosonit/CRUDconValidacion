@@ -1,22 +1,16 @@
-package Student.domain;
+package App.domain;
 
-import Estudiante_asignatura.domain.Estudiante_asignatura;
-import Persona.domain.Persona;
-import Profesor.domain.Profesor;
-import Student.Utils.StringPrefixedSequenceIdGenerator;
+import App.Utils.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@EqualsAndHashCode
 @Data
-public class Student {
+public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ausencias_seq")
     @GenericGenerator(
@@ -29,36 +23,21 @@ public class Student {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value =
                             "%08d")
             } )
-    @Column(name = "id_student", nullable = false)
-    private String id_student;
+    @Column(name = "id_profesor", nullable = false)
+    private String id_profesor;
 
     @Column
             @OneToOne
             @JoinColumn(name = "id_persona")
     private Persona persona;
 
-
-    @Column
-    @NotNull(message = "Es necesario especificar el número de horas semanales")
-    private int num_hours_week;
-
     @Column
     private String coments;
 
     @Column
-            @ManyToOne
-            @JoinColumn(name = "id_profesor")
-    private Profesor profesor;
+            @NotNull(message = "Es necesario agregar una materia impartida a cada profesor")
+    private String branch;
 
-    @Column
-            @NotNull(message = "Se debe especificar una rama principal para cada estudiante")
-    private String Branch;
-
-    @ManyToMany
-    @JoinTable(
-            name = "cursando_asignatura",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "id_asignatura"))
-    private List<Estudiante_asignatura> asignaturas;
-
+    @OneToMany
+    private List<Student> estudiantes;
 }

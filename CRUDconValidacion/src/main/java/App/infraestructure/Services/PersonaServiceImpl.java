@@ -1,7 +1,9 @@
-package Persona.infraestructure.repository;
+package App.infraestructure.Services;
 
-import Persona.domain.Persona;
-import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import App.domain.Persona;
+import App.infraestructure.controller.dto.input.inputPersonaDTO;
+import App.infraestructure.repository.PersonaRepository;
+import App.infraestructure.repository.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ import java.util.List;
 @Service
 public class PersonaServiceImpl implements PersonaService {
     @Autowired
-          PersonaRepository repositorio;
+    PersonaRepository repositorio;
 
 
     public Persona findById(String ID){

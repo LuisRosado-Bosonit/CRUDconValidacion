@@ -1,7 +1,7 @@
-package Persona.infraestructure.controller.dto.output;
+package App.infraestructure.controller.dto.output;
 
-import Persona.domain.Persona;
-import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import App.domain.Persona;
+import App.infraestructure.controller.dto.input.inputPersonaDTO;
 import lombok.Data;
 
 import java.util.Date;
