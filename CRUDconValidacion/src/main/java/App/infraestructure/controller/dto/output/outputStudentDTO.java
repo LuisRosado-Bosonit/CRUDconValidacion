@@ -48,6 +48,7 @@ public class outputStudentDTO {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
+    private int id_profesor;
 
 
     public outputStudentDTO build(String ID, boolean simple) throws Exception {
@@ -75,5 +76,7 @@ public class outputStudentDTO {
         this.termination_date = persona.getTermination_date();
         return this;
     }
+
+
 
 }

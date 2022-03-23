@@ -19,4 +19,9 @@ public class StudentServiceImpl implements StudentService {
         log.info("-----Se ha producido una búsqueda en la  tabla Student por el ID"+ID+"-----");
         return repositorio.getById(ID);
     }
+
+    @Override
+    public void addStudent(Student estudiante) {
+        repositorio.save(estudiante);
+    }
 }

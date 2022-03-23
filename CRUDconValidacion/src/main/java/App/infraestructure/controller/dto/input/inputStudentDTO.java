@@ -1,14 +1,24 @@
 package App.infraestructure.controller.dto.input;
 
+import App.domain.Estudiante_asignatura;
+import App.domain.Persona;
+import App.domain.Profesor;
 import App.domain.Student;
 import App.infraestructure.Services.PersonaService;
+import App.infraestructure.Services.ProfesorService;
+import App.infraestructure.controller.dto.output.outputStudentDTO;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Data
-public class InputStudentDTO {
+public class inputStudentDTO {
     @Autowired
     PersonaService servicioPersona;
+
+    @Autowired
+    ProfesorService servicioProfesor;
 
     private String id_persona;
     private int horas_semanales;
@@ -35,11 +45,37 @@ public class InputStudentDTO {
         return actual;
     }
 
+    public Student transformToStudent(){
+        Student actual = new Student();
+        actual.setBranch(this.branch);
+        actual.setComents(this.comentarios);
+        actual.setNum_hours_week(this.horas_semanales);
+        if(id_profesor != null){
+            Profesor profe = new Profesor();
+            profe = servicioProfesor.findByID(id_profesor);
+        }else if(id_persona != null){
+            Persona person = new Persona();
+            person = servicioPersona.findById(id_persona);
+        }
+        return actual;
+    }
+
     private boolean comprobarRama(String rame){
        if(rame.equals("Front") || rame.equals("Back") || rame.equals("FullStack")) {
            return true;
        }
        return false;
+    }
+
+    public outputStudentDTO obtenerOutputDTO(){
+        outputStudentDTO out = new outputStudentDTO();
+
+        out.setComents(this.comentarios);
+        out.setBranch(this.branch);
+        out.setNum_hours_week(this.horas_semanales);
+        out.setId_persona(Integer.parseInt(this.id_persona));
+        out.setId_profesor(Integer.parseInt(this.id_profesor));
+        return out;
     }
 
 
