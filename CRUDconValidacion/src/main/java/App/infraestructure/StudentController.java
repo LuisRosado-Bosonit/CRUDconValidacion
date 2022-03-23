@@ -14,7 +14,7 @@ public class StudentController {
     StudentService servicio;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "estudiante/{ID}/")
+    @GetMapping(value = "estudiante/{ID}")
     public ResponseEntity<outputStudentDTO> getByID(@PathVariable String ID, @RequestParam(name = "type",defaultValue = "simple") String tipo) throws Exception {
         outputStudentDTO output = new outputStudentDTO();
         if(tipo.equals("simple"))output.build(ID,true) ;

@@ -16,7 +16,6 @@ import java.util.Date;
 public class Persona {
     @Id
     @Column(name = "id_persona", nullable = false)
-    @GeneratedValue
     private int id_persona;
 
     @Column(name="usuario", nullable = false)

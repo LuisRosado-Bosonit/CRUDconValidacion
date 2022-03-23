@@ -4,33 +4,29 @@ import App.Utils.StringPrefixedSequenceIdGenerator;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.GenericGenerator;
-
+import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@EqualsAndHashCode
 @Data
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ausencias_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "generador")
     @GenericGenerator(
-            name = "ausencias_seq",
-            strategy = "src/main/java/Student/Utils/StringPrefixedSequenceIdGenerator.java",
+            name = "generador",
+            strategy = "App.Utils.StringPrefixedSequenceIdGenerator",
             parameters = {
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value =
-                            "AUS"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value =
-                            "%08d")
-            } )
-    @Column(name = "id_student", nullable = false)
+                    @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+                    @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
+                    @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
+            })
     private String id_student;
 
-    @Column
-            @OneToOne
-            @JoinColumn(name = "id_persona")
+
+    @OneToOne
+    @JoinColumn(name = "id_persona")
     private Persona persona;
 
 
@@ -41,9 +37,9 @@ public class Student {
     @Column
     private String coments;
 
-    @Column
-            @ManyToOne
-            @JoinColumn(name = "id_profesor")
+
+    @ManyToOne
+    @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 
     @Column
@@ -53,8 +49,9 @@ public class Student {
     @ManyToMany
     @JoinTable(
             name = "cursando_asignatura",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "id_asignatura"))
+            joinColumns ={ @JoinColumn(name = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_asignatura")})
     private List<Estudiante_asignatura> asignaturas;
 
 }
+

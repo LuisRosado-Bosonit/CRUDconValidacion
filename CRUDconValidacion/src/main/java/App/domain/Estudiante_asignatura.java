@@ -13,23 +13,19 @@ import java.util.List;
 @Data
 public class Estudiante_asignatura {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ausencias_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "generador")
     @GenericGenerator(
-            name = "ausencias_seq",
-            strategy = "src/main/java/Student/Utils/StringPrefixedSequenceIdGenerator.java",
+            name = "generador",
+            strategy = "App.Utils.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value =
-                            "AUS"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value =
-                            "%08d")
-            } )
-    @Column(name = "id_asignatura", nullable = false)
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
+            })
     private String id_asignatura;
 
     @Column
             @ManyToMany(mappedBy = "asignaturas")
-            @JoinColumn(name = "id_student")
     private List<Student> estudiantes;
 
     @Column
