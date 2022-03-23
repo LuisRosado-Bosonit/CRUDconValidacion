@@ -1,14 +1,11 @@
 package App.infraestructure;
 
 import App.infraestructure.Services.StudentService;
-import App.infraestructure.controller.dto.output.outputStudentDTOsimple;
+import App.infraestructure.controller.dto.output.outputStudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StudentController {
@@ -18,8 +15,10 @@ public class StudentController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "estudiante/{ID}/")
-    public ResponseEntity<outputStudentDTOsimple> getByID(@PathVariable String ID) throws Exception {
-        outputStudentDTOsimple output = new outputStudentDTOsimple(ID);
+    public ResponseEntity<outputStudentDTO> getByID(@PathVariable String ID, @RequestParam(name = "type",defaultValue = "simple") String tipo) throws Exception {
+        outputStudentDTO output = new outputStudentDTO();
+        if(tipo.equals("simple"))output.build(ID,true) ;
+        output.build(ID,false) ;
         return ResponseEntity.status(HttpStatus.OK).body(output);
     }
 }
