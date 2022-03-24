@@ -36,4 +36,13 @@ public class ProfesorController {
         return ResponseEntity.status(HttpStatus.FOUND).body("Se ha removido correctamente");
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("profesor")
+    public ResponseEntity<outputProfesorDTO> updateById(@RequestParam String id,
+                                                        @RequestBody inputProfesorDTO input){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(servicioProfesor.updateByID(id,input));
+    }
+
+
+
 }

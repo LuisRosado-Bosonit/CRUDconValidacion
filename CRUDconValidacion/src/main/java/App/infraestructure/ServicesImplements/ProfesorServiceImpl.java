@@ -44,5 +44,16 @@ public class ProfesorServiceImpl implements ProfesorService {
         repositorio.deleteById(id);
     }
 
+    @Override
+    public outputProfesorDTO updateByID(String id, inputProfesorDTO dto) {
+        Profesor anterior = repositorio.findById(id).orElseThrow();
+        outputProfesorDTO out = new outputProfesorDTO();
+        if(dto.getComents() != null) anterior.setComents(dto.getComents());
+        if(dto.getBranch() != null) anterior.setBranch(dto.getBranch());
+        log.warn("----- SE HA MODIFICADO AL PROFESOR CON ID: "+ id+" -----");
+        repositorio.save(anterior);
+        return out.fromEntity(anterior);
+    }
+
 
 }

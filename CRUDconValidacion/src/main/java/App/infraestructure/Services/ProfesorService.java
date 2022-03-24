@@ -9,4 +9,5 @@ public interface ProfesorService {
     public outputProfesorDTO findByID(String id) throws Exception;
     public outputProfesorDTO addFromPersona(Profesor profesor);
     public void removeByID(String id);
+    public outputProfesorDTO updateByID(String id, inputProfesorDTO dto);
 }
