@@ -20,6 +20,7 @@ public class inputStudentDTO {
     @Autowired
     ProfesorService servicioProfesor;
 
+
     private String id_persona;
     private int horas_semanales;
     private String comentarios;
@@ -46,6 +47,7 @@ public class inputStudentDTO {
     }
 
     public Student transformToStudent(){
+        
         Student actual = new Student();
         actual.setBranch(this.branch);
         actual.setComents(this.comentarios);
@@ -73,8 +75,8 @@ public class inputStudentDTO {
         out.setComents(this.comentarios);
         out.setBranch(this.branch);
         out.setNum_hours_week(this.horas_semanales);
-        out.setId_persona(Integer.parseInt(this.id_persona));
-        out.setId_profesor(Integer.parseInt(this.id_profesor));
+        if(this.id_persona != null)out.setId_persona(Integer.parseInt(this.id_persona));
+        if(this.id_profesor != null)out.setId_profesor(Integer.parseInt(this.id_profesor));
         return out;
     }
 

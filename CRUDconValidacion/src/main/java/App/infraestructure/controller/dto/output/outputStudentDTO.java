@@ -2,6 +2,7 @@ package App.infraestructure.controller.dto.output;
 
 import App.domain.Estudiante_asignatura;
 import App.domain.Persona;
+import App.domain.Profesor;
 import App.domain.Student;
 import App.infraestructure.Services.PersonaService;
 import App.infraestructure.Services.StudentService;
@@ -21,20 +22,12 @@ public class outputStudentDTO {
     StudentService servicioStudiante;
 
     private String id_student;
-
-    //private Persona persona;
-
     private int num_hours_week;
-
     private String coments;
-
-    //private Profesor profesor;
-
     private String Branch;
-
     private List<Estudiante_asignatura> asignaturas;
-
-
+    private Persona person;
+    private Profesor profe;
 
     //Consulta FULL
 
@@ -74,6 +67,14 @@ public class outputStudentDTO {
         this.created_date = persona.getCreated_date();
         this.imagen_url = persona.getImagen_url();
         this.termination_date = persona.getTermination_date();
+        return this;
+    }
+
+
+    public outputStudentDTO toDTO(Student estudiante){
+        this.setId_student(estudiante.getId_student());
+        this.setNum_hours_week(estudiante.getNum_hours_week());
+       // this.setId_profesor(estudiante.getProfesor().getId_profesor());
         return this;
     }
 

@@ -23,7 +23,7 @@ public class Profesor {
             })
     private String id_profesor;
 
-    @OneToOne
+    @Transient @OneToOne //FIXME DESCOMENTAR LAS RELACIONES DE LA CLASE PROFESOR
     @JoinColumn(name = "id_persona")
     private Persona persona;
 
@@ -34,6 +34,6 @@ public class Profesor {
             @NotNull(message = "Es necesario agregar una materia impartida a cada profesor")
     private String branch;
 
-    @OneToMany
+    @Transient @OneToMany
     private List<Student> estudiantes;
 }

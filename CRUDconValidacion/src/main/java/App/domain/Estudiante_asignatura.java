@@ -24,9 +24,8 @@ public class Estudiante_asignatura {
             })
     private String id_asignatura;
 
-    @Column
-            @ManyToMany(mappedBy = "asignaturas")
-    private List<Student> estudiantes;
+//    @Transient @ManyToMany(mappedBy = "asignaturas")
+//    private List<Student> estudiantes;
 
     @Column
     private String asignatura;

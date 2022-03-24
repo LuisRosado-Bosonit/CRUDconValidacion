@@ -25,7 +25,7 @@ public class Student {
     private String id_student;
 
 
-    @OneToOne
+    @Transient @OneToOne     //FIXME DESCOMENTAR LAS RELACIONES DE LA CLASE STUDENT
     @JoinColumn(name = "id_persona")
     private Persona persona;
 
@@ -38,7 +38,7 @@ public class Student {
     private String coments;
 
 
-    @ManyToOne
+    @Transient @ManyToOne
     @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 
@@ -46,7 +46,7 @@ public class Student {
             @NotNull(message = "Se debe especificar una rama principal para cada estudiante")
     private String Branch;
 
-    @ManyToMany
+    @Transient @ManyToMany
     @JoinTable(
             name = "cursando_asignatura",
             joinColumns ={ @JoinColumn(name = "student_id")},
