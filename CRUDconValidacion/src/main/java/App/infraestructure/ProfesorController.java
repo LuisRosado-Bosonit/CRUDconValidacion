@@ -18,9 +18,15 @@ public class ProfesorController {
 
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("profesor/add/")
+    @PostMapping("profesor")
     public ResponseEntity<outputProfesorDTO> add(@RequestBody inputProfesorDTO input){
            return ResponseEntity.status(HttpStatus.OK).body(servicioProfesor.addFromPersona(input.toEntity(input)));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("profesor")
+    public ResponseEntity<outputProfesorDTO> getById(@RequestParam String ID) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(servicioProfesor.findByID(ID));
     }
 
 }

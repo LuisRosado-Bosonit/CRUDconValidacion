@@ -54,7 +54,7 @@ public class inputStudentDTO {
         actual.setNum_hours_week(this.horas_semanales);
         if(id_profesor != null){
             Profesor profe = new Profesor();
-            profe = servicioProfesor.findByID(id_profesor);
+               //profe = servicioProfesor.findByID(id_profesor);          //FIXME ARREGLAR CON EL NUEVO MÉTODO QUE DEVUELVA UN TIPO DE LA ENTIDAD
         }else if(id_persona != null){
             Persona person = new Persona();
             person = servicioPersona.findById(id_persona);

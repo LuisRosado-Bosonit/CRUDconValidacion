@@ -6,7 +6,7 @@ import App.infraestructure.controller.dto.output.outputProfesorDTO;
 import App.infraestructure.repository.ProfesorRepository;
 
 public interface ProfesorService {
-    public Profesor findByID(String id);
+    public outputProfesorDTO findByID(String id) throws Exception;
 
     public outputProfesorDTO addFromPersona(Profesor profesor);
 }
