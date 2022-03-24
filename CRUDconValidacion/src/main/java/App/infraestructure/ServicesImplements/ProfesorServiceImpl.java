@@ -37,6 +37,12 @@ public class ProfesorServiceImpl implements ProfesorService {
         return out.fromEntity(repositorio.save(profesor));
     }
 
+    @Override
+    public void removeByID(String id) {
+        outputProfesorDTO out = new outputProfesorDTO();
+        log.warn("----- SE VA A ELIMINAR AL OBJETO PROFESOR CUYO ID ES: "+id);
+        repositorio.deleteById(id);
+    }
 
 
 }
