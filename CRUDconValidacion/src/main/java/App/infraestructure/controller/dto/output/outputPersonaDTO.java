@@ -8,6 +8,7 @@ import java.util.Date;
 @Data
 public class outputPersonaDTO {
 
+    private String id_persona;
     private String usuario;
     private String name;
     private String surname;
@@ -19,6 +20,7 @@ public class outputPersonaDTO {
     private Date termination_date;
 
     public outputPersonaDTO toOutputDTO(Persona origen){
+        this.id_persona = origen.getId_persona();
         this.usuario = origen.getUsuario();
         this.name = origen.getName();
         this.surname = origen.getSurname();
@@ -32,6 +34,7 @@ public class outputPersonaDTO {
     }
 
     public outputPersonaDTO fromInput(inputPersonaDTO in){
+        this.id_persona = in.getId_persona();
         this.usuario = in.getUsuario();
         this.name = in.getName();
         this.surname = in.getSurname();

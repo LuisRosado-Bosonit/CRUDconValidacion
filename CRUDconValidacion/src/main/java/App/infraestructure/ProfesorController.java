@@ -1,6 +1,7 @@
 package App.infraestructure;
 
 import App.domain.Persona;
+import App.infraestructure.Services.PersonaService;
 import App.infraestructure.Services.ProfesorService;
 import App.infraestructure.controller.dto.input.inputProfesorDTO;
 import App.infraestructure.controller.dto.output.outputProfesorDTO;
@@ -16,11 +17,14 @@ public class ProfesorController {
     @Autowired
     ProfesorService servicioProfesor;
 
+    @Autowired
+    PersonaService servicioPersona;
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("profesor")
-    public ResponseEntity<outputProfesorDTO> add(@RequestBody inputProfesorDTO input){
-           return ResponseEntity.status(HttpStatus.CREATED).body(servicioProfesor.addFromPersona(input.toEntity(input)));
+    public ResponseEntity<outputProfesorDTO> add(@RequestBody inputProfesorDTO input) throws Exception {
+           return ResponseEntity.status(HttpStatus.CREATED).body(servicioProfesor.addFromPersona(input.toEntity(input, servicioPersona.findById(input.getId_persona()))));
     }
 
     @ResponseStatus(HttpStatus.FOUND)

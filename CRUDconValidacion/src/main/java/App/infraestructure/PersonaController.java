@@ -15,6 +15,10 @@ public class PersonaController  {
     @Autowired
     PersonaService persona;   //Es una mala práctica ??
 
+    //Esta clase es la primera de la que hice un CRUD, por eso es tan primitivo y poco sólido,
+    // la he dejado intacta a posta
+
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("persona/{ID}")
     public ResponseEntity<Persona> buscarPorID(@PathVariable String ID){

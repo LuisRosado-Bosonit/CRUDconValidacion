@@ -75,7 +75,7 @@ public class inputStudentDTO {
         out.setComents(this.comentarios);
         out.setBranch(this.branch);
         out.setNum_hours_week(this.horas_semanales);
-        if(this.id_persona != null)out.setId_persona(Integer.parseInt(this.id_persona));
+        if(this.id_persona != null)out.setId_persona(this.id_persona);
         if(this.id_profesor != null)out.setId_profesor(Integer.parseInt(this.id_profesor));
         return out;
     }

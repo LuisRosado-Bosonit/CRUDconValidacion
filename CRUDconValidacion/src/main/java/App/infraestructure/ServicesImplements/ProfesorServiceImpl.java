@@ -6,7 +6,9 @@ import App.infraestructure.controller.dto.input.inputProfesorDTO;
 import App.infraestructure.controller.dto.output.outputProfesorDTO;
 import App.infraestructure.repository.ProfesorRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,6 +31,10 @@ public class ProfesorServiceImpl implements ProfesorService {
         }
         return out.fromEntity(repositorio.findById(id).get()) ;
     }
+
+    public Profesor internFindById(String id){
+        return repositorio.findById(id).orElseThrow();
+    }
       
     @Override
     public outputProfesorDTO addFromPersona(Profesor profesor) {
@@ -49,6 +55,7 @@ public class ProfesorServiceImpl implements ProfesorService {
         Profesor anterior = repositorio.findById(id).orElseThrow();
         outputProfesorDTO out = new outputProfesorDTO();
         if(dto.getComents() != null) anterior.setComents(dto.getComents());
+        //BeanUtils.copyProperties(dto,out);
         if(dto.getBranch() != null) anterior.setBranch(dto.getBranch());
         log.warn("----- SE HA MODIFICADO AL PROFESOR CON ID: "+ id+" -----");
         repositorio.save(anterior);

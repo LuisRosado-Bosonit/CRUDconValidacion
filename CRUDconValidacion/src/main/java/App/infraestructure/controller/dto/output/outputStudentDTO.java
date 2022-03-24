@@ -31,7 +31,7 @@ public class outputStudentDTO {
 
     //Consulta FULL
 
-    private int id_persona;
+    private String id_persona;
     private String usuario;
     private String name;
     private String surname;

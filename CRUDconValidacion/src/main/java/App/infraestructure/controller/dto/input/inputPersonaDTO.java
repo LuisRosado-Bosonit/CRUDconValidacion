@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class inputPersonaDTO {
     //private Logger log =  LoggerFactory.getLogger(PersonaDTO.class);
-    private int id_persona;
+    private String id_persona;
     private String usuario;
     private String password;
     private String name;

@@ -10,4 +10,5 @@ public interface ProfesorService {
     public outputProfesorDTO addFromPersona(Profesor profesor);
     public void removeByID(String id);
     public outputProfesorDTO updateByID(String id, inputProfesorDTO dto);
+    public Profesor internFindById(String id);
 }

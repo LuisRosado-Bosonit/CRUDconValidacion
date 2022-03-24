@@ -18,12 +18,12 @@ public class Profesor {
             strategy = "App.Utils.StringPrefixedSequenceIdGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
-                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EST"),
+                    @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "PRF"),
                     @org.hibernate.annotations.Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d")
             })
     private String id_profesor;
 
-    @Transient @OneToOne //FIXME DESCOMENTAR LAS RELACIONES DE LA CLASE PROFESOR
+    @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona persona;
 
