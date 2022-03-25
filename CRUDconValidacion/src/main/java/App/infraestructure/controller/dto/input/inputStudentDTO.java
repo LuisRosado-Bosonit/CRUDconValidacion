@@ -1,16 +1,13 @@
 package App.infraestructure.controller.dto.input;
 
-import App.domain.Estudiante_asignatura;
 import App.domain.Persona;
 import App.domain.Profesor;
 import App.domain.Student;
 import App.infraestructure.Services.PersonaService;
 import App.infraestructure.Services.ProfesorService;
-import App.infraestructure.controller.dto.output.outputStudentDTO;
+import App.infraestructure.controller.dto.output.outputStudentDTOfull;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 @Data
 public class inputStudentDTO {
@@ -19,7 +16,6 @@ public class inputStudentDTO {
 
     @Autowired
     ProfesorService servicioProfesor;
-
 
     private String id_persona;
     private int horas_semanales;
@@ -64,14 +60,15 @@ public class inputStudentDTO {
        return false;
     }
 
-    public outputStudentDTO obtenerOutputDTO(){
-        outputStudentDTO out = new outputStudentDTO();
+    public outputStudentDTOfull obtenerOutputDTO(Student estudiante){
+        outputStudentDTOfull out = new outputStudentDTOfull();
 
-        out.setComents(this.comentarios);
-        out.setBranch(this.branch);
-        out.setNum_hours_week(this.horas_semanales);
-        if(this.id_persona != null)out.setId_persona(this.id_persona);
-        if(this.id_profesor != null)out.setId_profesor(this.id_profesor);
+        out.setId_student(estudiante.getId_student());
+        out.setComents(estudiante.getComents());
+        out.setBranch(estudiante.getBranch());
+        out.setNum_hours_week(estudiante.getNum_hours_week());
+        out.setPerson(estudiante.getPersona());
+        out.setProfe(estudiante.getProfesor());
         return out;
     }
 

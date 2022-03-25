@@ -21,8 +21,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void addStudent(Student estudiante) {
+    public Student addStudent(Student estudiante) {
         log.info("----- Se ha producido una inserción en la BBDD de la entidad Student -----");
-        repositorio.save(estudiante);
+        return repositorio.save(estudiante);
     }
 }
