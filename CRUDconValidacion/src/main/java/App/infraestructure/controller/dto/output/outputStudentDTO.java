@@ -15,11 +15,7 @@ import java.util.List;
 @Data
 public class outputStudentDTO {
 
-    @Autowired
-    PersonaService servicioPersona;
 
-    @Autowired
-    StudentService servicioStudiante;
 
     private String id_student;
     private int num_hours_week;
@@ -41,34 +37,34 @@ public class outputStudentDTO {
     private Date created_date;
     private String imagen_url;
     private Date termination_date;
-    private int id_profesor;
+    private String id_profesor;
 
 
-    public outputStudentDTO build(String ID, boolean simple) throws Exception {
-        Student estudiante = new Student();
-        estudiante = servicioStudiante.findByID(ID);
-        if(estudiante == null)throw new Exception("No se ha encontrado ningún estudiante con ese ID");
-        this.id_student = estudiante.getId_student();
-        this.num_hours_week = estudiante.getNum_hours_week();
-        this.coments = estudiante.getComents();
-        this.Branch = estudiante.getBranch();
-        if(simple)return this;
-
-        //Si la consulta es de tipo FULL se devolverán también los siguientes campos
-        Persona persona = new Persona();
-        persona = estudiante.getPersona();
-        this.id_persona = persona.getId_persona();
-        this.usuario = persona.getUsuario();
-        this.name = persona.getName();
-        this.surname = persona.getSurname();
-        this.company_email = persona.getCompany_email();
-        this.city = persona.getCity();
-        this.active = persona.isActive();
-        this.created_date = persona.getCreated_date();
-        this.imagen_url = persona.getImagen_url();
-        this.termination_date = persona.getTermination_date();
-        return this;
-    }
+//    public outputStudentDTO build(String ID, boolean simple) throws Exception {
+//        Student estudiante = new Student();
+//        estudiante = servicioStudiante.findByID(ID);
+//        if(estudiante == null)throw new Exception("No se ha encontrado ningún estudiante con ese ID");
+//        this.id_student = estudiante.getId_student();
+//        this.num_hours_week = estudiante.getNum_hours_week();
+//        this.coments = estudiante.getComents();
+//        this.Branch = estudiante.getBranch();
+//        if(simple)return this;
+//
+//        //Si la consulta es de tipo FULL se devolverán también los siguientes campos
+//        Persona persona = new Persona();
+//        persona = estudiante.getPersona();
+//        this.id_persona = persona.getId_persona();
+//        this.usuario = persona.getUsuario();
+//        this.name = persona.getName();
+//        this.surname = persona.getSurname();
+//        this.company_email = persona.getCompany_email();
+//        this.city = persona.getCity();
+//        this.active = persona.isActive();
+//        this.created_date = persona.getCreated_date();
+//        this.imagen_url = persona.getImagen_url();
+//        this.termination_date = persona.getTermination_date();
+//        return this;
+//    }
 
 
     public outputStudentDTO toDTO(Student estudiante){

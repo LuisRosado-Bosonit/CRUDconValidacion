@@ -46,19 +46,14 @@ public class inputStudentDTO {
         return actual;
     }
 
-    public Student transformToStudent(){
-        
+    public Student transformToStudent(Profesor _profe, Persona _persona){
+
         Student actual = new Student();
         actual.setBranch(this.branch);
         actual.setComents(this.comentarios);
         actual.setNum_hours_week(this.horas_semanales);
-        if(id_profesor != null){
-            Profesor profe = new Profesor();
-               //profe = servicioProfesor.findByID(id_profesor);          //FIXME ARREGLAR CON EL NUEVO MÉTODO QUE DEVUELVA UN TIPO DE LA ENTIDAD
-        }else if(id_persona != null){
-            Persona person = new Persona();
-            person = servicioPersona.findById(id_persona);
-        }
+        actual.setProfesor(_profe);
+        actual.setPersona(_persona);
         return actual;
     }
 
@@ -76,7 +71,7 @@ public class inputStudentDTO {
         out.setBranch(this.branch);
         out.setNum_hours_week(this.horas_semanales);
         if(this.id_persona != null)out.setId_persona(this.id_persona);
-        if(this.id_profesor != null)out.setId_profesor(Integer.parseInt(this.id_profesor));
+        if(this.id_profesor != null)out.setId_profesor(this.id_profesor);
         return out;
     }
 

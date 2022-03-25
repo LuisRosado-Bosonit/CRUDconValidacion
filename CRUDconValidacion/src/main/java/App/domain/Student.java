@@ -25,7 +25,7 @@ public class Student {
     private String id_student;
 
 
-    @Transient @OneToOne     //FIXME DESCOMENTAR LAS RELACIONES DE LA CLASE STUDENT
+    @OneToOne
     @JoinColumn(name = "id_persona")
     private Persona persona;
 
