@@ -11,7 +11,7 @@ import java.util.Date;
 public class inputEstud_AsigDTO {
 
 
-    private String id_asignatura;
+    //private String id_asignatura;
     private String asignatura;
     private Date initial_date;
     private Date finish_date;
@@ -20,7 +20,7 @@ public class inputEstud_AsigDTO {
         Estudiante_asignatura sub = new Estudiante_asignatura();
         sub.setAsignatura(input.getAsignatura());
         sub.setFinish_date(input.getFinish_date());
-        sub.setId_asignatura(input.getId_asignatura());
+        //sub.setId_asignatura(input.getId_asignatura());
         sub.setInitial_date(input.getInitial_date());
         return sub;
     }

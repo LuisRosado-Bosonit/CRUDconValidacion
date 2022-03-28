@@ -1,5 +1,6 @@
 package App.infraestructure.controller.dto.input;
 
+import App.domain.Estudiante_asignatura;
 import App.domain.Persona;
 import App.domain.Profesor;
 import App.domain.Student;
@@ -8,6 +9,8 @@ import App.infraestructure.Services.ProfesorService;
 import App.infraestructure.controller.dto.output.outputStudentDTOfull;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Data
 public class inputStudentDTO {
@@ -22,6 +25,7 @@ public class inputStudentDTO {
     private String comentarios;
     private String id_profesor;
     private String branch;
+    private String asignatura;
 
 //    public Student InputStudentDTO( String _id_persona, int _horas, String _comentarios, String _id_profesor, String _branch  ){
 //        Student actual = new Student();
@@ -42,14 +46,15 @@ public class inputStudentDTO {
         return actual;
     }
 
-    public Student transformToStudent(Profesor _profe, Persona _persona){
+    public Student transformToStudent(Persona _persona, Profesor profesor, Estudiante_asignatura _asignatura){
 
         Student actual = new Student();
         actual.setBranch(this.branch);
         actual.setComents(this.comentarios);
         actual.setNum_hours_week(this.horas_semanales);
-        actual.setProfesor(_profe);
-        actual.setPersona(_persona);
+        if(_persona!=null)actual.setPersona(_persona);
+        if(profesor!=null)actual.setProfesor(profesor);
+        actual.addSubject(_asignatura);
         return actual;
     }
 

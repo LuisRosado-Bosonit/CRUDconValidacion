@@ -31,6 +31,11 @@ public class EstudianteAsignaturaImpl implements EstudianteAsignaturaService {
     }
 
     @Override
+    public Estudiante_asignatura internFindByID(String id) {
+        return repositorio.getById(id);
+    }
+
+    @Override
     public outputEstud_AsigDTO addSubject(inputEstud_AsigDTO input) {
         log.info("----- Se ha añadido un elemento de la tabla de asignaturas -----");
         outputEstud_AsigDTO out = new outputEstud_AsigDTO();

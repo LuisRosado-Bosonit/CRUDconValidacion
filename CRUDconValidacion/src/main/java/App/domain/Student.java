@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,7 @@ public class Student {
     private String id_student;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_persona")
     private Persona persona;
 
@@ -38,7 +39,7 @@ public class Student {
     private String coments;
 
 
-    @Transient @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 
@@ -46,12 +47,17 @@ public class Student {
             @NotNull(message = "Se debe especificar una rama principal para cada estudiante")
     private String Branch;
 
-    @Transient @ManyToMany
+    @ManyToMany
     @JoinTable(
             name = "cursando_asignatura",
             joinColumns ={ @JoinColumn(name = "student_id")},
             inverseJoinColumns = {@JoinColumn(name = "id_asignatura")})
     private List<Estudiante_asignatura> asignaturas;
+
+    public void addSubject(Estudiante_asignatura asignatura){
+        this.asignaturas = new ArrayList<>();
+        this.asignaturas.add(asignatura);
+    }
 
 }
 
