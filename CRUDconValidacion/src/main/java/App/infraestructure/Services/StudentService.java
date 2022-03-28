@@ -11,4 +11,6 @@ public interface StudentService{
     public Student addStudent(Student estudiante);
     public boolean findByPersonaId(String ID);
     public List<Estudiante_asignatura> addAsignaturas(String id,List<String> id_asignaturas);
+
+    boolean removeAsignaturas(String id,List<String> id_asignaturas);
 }

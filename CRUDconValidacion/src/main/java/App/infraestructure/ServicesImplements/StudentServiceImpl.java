@@ -43,4 +43,17 @@ public class StudentServiceImpl implements StudentService {
         id_asignaturas.forEach(s -> {estudiante.addSubject(servicioAsignaturas.internFindByID(s));});
         return repositorio.save(estudiante).getAsignaturas();
     }
+
+    @Override
+    public boolean removeAsignaturas(String id,List<String> id_asignaturas) {
+        Student estudiante = repositorio.getById(id);
+        List<Estudiante_asignatura> lista = estudiante.getAsignaturas();
+        id_asignaturas.forEach(s -> {try{
+            lista.remove(servicioAsignaturas.internFindByID(s));
+        } catch (Exception e) {
+            log.error("----- Se ha intentado eliminar una asignatura que no pertenecía a un estudiante -----");
+            e.printStackTrace();
+        }});
+        return true;
+    }
 }

@@ -58,6 +58,7 @@ public class Student {
         this.asignaturas = new ArrayList<>();
         this.asignaturas.add(asignatura);
     }
+    
 
 }
 

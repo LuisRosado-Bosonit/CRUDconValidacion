@@ -62,12 +62,19 @@ public class StudentController {
 
     @ResponseStatus(HttpStatus.FOUND)
     @PostMapping(value = "estudiante/addSubject")
-    public ResponseEntity<Object> getByID(@PathVariable String ID,
+    public ResponseEntity<List<Estudiante_asignatura>> getByID(@PathVariable String ID,
                                           @PathVariable List<String> id_asignaturas) throws Exception {
-
-
-        return null;
+        return ResponseEntity.status(HttpStatus.FOUND).body(servicio.addAsignaturas(ID, id_asignaturas));
     }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping(value = "estudiante/removeSujects")
+    public ResponseEntity<String> eliminarAsignaturas(@PathVariable List<String> id_asignaturas,
+                                                      @PathVariable String id){
+        servicio.removeAsignaturas(id,id_asignaturas);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Todo bien");
+    }
+
 
 
 

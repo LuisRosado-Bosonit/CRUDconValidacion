@@ -40,4 +40,10 @@ public class EstudianteAsignaturaController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(servicioAsignatura.updateByID(id,input));
     }
 
+    @ResponseStatus(HttpStatus.FOUND)
+    @GetMapping("asignatura/StudentId")
+    public ResponseEntity<String> getSubjectsByStudentId(@RequestParam String ID) throws Exception {
+        return ResponseEntity.status(HttpStatus.FOUND).body("");
+    }
+
 }

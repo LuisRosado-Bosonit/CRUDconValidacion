@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class EstudianteAsignaturaImpl implements EstudianteAsignaturaService {
@@ -40,6 +42,11 @@ public class EstudianteAsignaturaImpl implements EstudianteAsignaturaService {
         log.info("----- Se ha añadido un elemento de la tabla de asignaturas -----");
         outputEstud_AsigDTO out = new outputEstud_AsigDTO();
         return out.fromAsignatura(repositorio.save(input.toEntity(input)));
+    }
+
+    @Override
+    public List<Estudiante_asignatura> asignaturasCursadas(String id) {
+        return null;
     }
 
     @Override
