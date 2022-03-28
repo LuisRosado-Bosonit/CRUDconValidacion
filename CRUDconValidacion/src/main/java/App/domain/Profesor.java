@@ -34,6 +34,6 @@ public class Profesor {
             @NotNull(message = "Es necesario agregar una materia impartida a cada profesor")
     private String branch;
 
-    @Transient @OneToMany
+    @OneToMany
     private List<Student> estudiantes;
 }

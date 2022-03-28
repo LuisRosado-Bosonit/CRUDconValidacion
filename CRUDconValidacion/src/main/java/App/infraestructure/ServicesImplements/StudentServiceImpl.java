@@ -25,4 +25,9 @@ public class StudentServiceImpl implements StudentService {
         log.info("----- Se ha producido una inserción en la BBDD de la entidad Student -----");
         return repositorio.save(estudiante);
     }
+
+    @Override
+    public boolean findByPersonaId(String ID) {
+        return repositorio.findPersonaByID(ID) != null;
+    }
 }

@@ -24,8 +24,8 @@ public class Estudiante_asignatura {
             })
     private String id_asignatura;
 
-//    @Transient @ManyToMany(mappedBy = "asignaturas")
-//    private List<Student> estudiantes;
+    @ManyToMany(mappedBy = "asignaturas", cascade = CascadeType.ALL)
+    private List<Student> estudiantes;
 
     @Column
     private String asignatura;
