@@ -60,6 +60,15 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(dto.obtenerOutputDTO(servicio.addStudent(dto.transformToStudent(persona,profesor,asignatura))));
     }
 
+    @ResponseStatus(HttpStatus.FOUND)
+    @PostMapping(value = "estudiante/addSubject")
+    public ResponseEntity<Object> getByID(@PathVariable String ID,
+                                          @PathVariable List<String> id_asignaturas) throws Exception {
+
+
+        return null;
+    }
+
 
 
 
