@@ -1,6 +1,7 @@
 package App.infraestructure;
 
 import App.domain.Persona;
+import App.domain.Profesor;
 import App.infraestructure.Services.PersonaService;
 import App.infraestructure.Services.ProfesorService;
 import App.infraestructure.Services.StudentService;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
  @Slf4j
@@ -24,6 +26,9 @@ public class ProfesorController {
 
     @Autowired
     StudentService servicioEstudiante;
+
+    @Autowired
+    RestTemplate restTemplate;
 
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -39,7 +44,12 @@ public class ProfesorController {
     @ResponseStatus(HttpStatus.FOUND)
     @GetMapping("profesor")
     public ResponseEntity<outputProfesorDTO> getById(@RequestParam String ID) throws Exception {
+        //ResponseEntity<Profesor> responseEntity= new RestTemplate().getForEntity("URL", Profesor.class);
         return ResponseEntity.status(HttpStatus.FOUND).body(servicioProfesor.findByID(ID));
+
+//        ResponseEntity<outputProfesorDTO> responseEntitys = new RestTemplate().getForEntity("https://localhost:8081/profesor"+servicioProfesor+ID,outputProfesorDTO.class);
+// 
+//        return ResponseEntity.status(HttpStatus.FOUND).body(responseEntitys.getBody());
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
