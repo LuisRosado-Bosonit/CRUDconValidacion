@@ -61,7 +61,7 @@ public class PersonaServiceImpl implements PersonaService {
             switch (field)
             {
                 case "usuario":
-                    predicates.add(cb.equal(root.get(field), (Integer)value));
+                    predicates.add(cb.equal(root.get(field), (String)value));
                     break;
                 case "name":
                     predicates.add(cb.like(root.get(field),"%"+(String)value+"%"));
@@ -84,6 +84,7 @@ public class PersonaServiceImpl implements PersonaService {
             }
 
         });
+        log.info("----- Se procede a hacer una consulta parametrizada a la entidad Persona -----");
         query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));
         return entityManager.createQuery(query).getResultList();
     }
