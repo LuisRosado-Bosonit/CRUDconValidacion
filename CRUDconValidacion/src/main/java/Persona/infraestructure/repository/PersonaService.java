@@ -3,6 +3,7 @@ package Persona.infraestructure.repository;
 import Persona.domain.Persona;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface PersonaService {
@@ -14,4 +15,6 @@ public interface PersonaService {
     public inputPersonaDTO guardarPersona(inputPersonaDTO dto) throws Exception;
 
     public List<Persona> showAll();
+
+    public List<Persona> getData(HashMap<String,Object> condiciones);
 }

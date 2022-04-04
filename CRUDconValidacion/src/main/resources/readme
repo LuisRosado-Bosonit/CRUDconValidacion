@@ -1,0 +1,4 @@
+1) Sobre el ejercicio anterior de mantenimiento de Personas.
+Crear endpoint que   permita buscar aquellas personas cuyo  ‘user’, ‘name’, ‘surname‘ o ‘fecha creación’
+superior a una dada y/o inferior a una dada. Incluir otro campo que indicará si se quiere ordenar el resultado
+por ‘user’ o ‘name’. Tener en cuenta que cualquiera de esos campos puede ser mandados, pero ninguno es obligatorio.
