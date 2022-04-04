@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Service
 public class PersonaServiceImpl implements PersonaService {
     @Autowired
-          PersonaRepository repositorio;
+        PersonaRepository repositorio;
 
     @Autowired
         EntityManager entityManager;
@@ -50,8 +50,10 @@ public class PersonaServiceImpl implements PersonaService {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Persona> query= cb.createQuery(Persona.class);
         Root<Persona> root = query.from(Persona.class);
-        AtomicReference<String> Order = new AtomicReference<>("");
+        final AtomicReference<String>[] Order = new AtomicReference[]{new AtomicReference<>("")};
         List<Predicate> predicates = new ArrayList<>();
+        final int[] tamPag = {-1};
+        final int[] numPag = {-1};
         condiciones.forEach((field,value) ->
         {
             switch (field)
@@ -78,17 +80,28 @@ public class PersonaServiceImpl implements PersonaService {
                     }
                     break;
                 case "orderBy":
-                    Order.set(field);
+                    Order[0].set(field);
+                case "tamPagina":
+                    tamPag[0] = Integer.parseInt(field);
+                case "numPagina":
+                    numPag[0] = Integer.parseInt(field);
             }
 
         });
-        if(Order.get().equals("")){
+        if(Order[0].get().equals("")){
             log.info("----- Se procede a hacer una consulta parametrizada a la entidad Persona -----");
             query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));
-            return entityManager.createQuery(query).getResultList();
+            return entityManager.createQuery(query)
+                    .setMaxResults(tamPag[0])
+                    .setFirstResult(numPag[0])
+                    .getResultList();
         }
         log.info("----- Se procede a hacer una consulta parametrizada a la entidad Persona -----");
-        query.select(root).where(predicates.toArray(new Predicate[predicates.size()])).orderBy(cb.asc(root.get(Order.get())));
-        return entityManager.createQuery(query).getResultList();
+        query.select(root).where(predicates.toArray(new Predicate[predicates.size()])).orderBy(cb.asc(root.get(Order[0].get())));
+
+        return entityManager.createQuery(query)
+                            .setMaxResults(tamPag[0])
+                            .setFirstResult(numPag[0])
+                            .getResultList();
     }
 }
