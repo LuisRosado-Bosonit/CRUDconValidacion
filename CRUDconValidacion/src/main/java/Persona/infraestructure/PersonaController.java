@@ -16,6 +16,8 @@ public class PersonaController  {
     @Autowired
     PersonaService persona;
 
+    record PersonaDTO(){};
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("persona/{ID}")
     public ResponseEntity<Persona> buscarPorID(@PathVariable String ID){
@@ -31,7 +33,7 @@ public class PersonaController  {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("persona")
-    public ResponseEntity<inputPersonaDTO> addPerson(@RequestBody inputPersonaDTO dto) throws Exception {
+    public ResponseEntity<PersonaServiceImpl.personaDTO> addPerson(@RequestBody PersonaServiceImpl.personaDTO dto) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(persona.guardarPersona(dto));
     }
 

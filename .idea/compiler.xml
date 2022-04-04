@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="CRUDconValidacion" target="11" />
+      <module name="CRUDconValidacion" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
