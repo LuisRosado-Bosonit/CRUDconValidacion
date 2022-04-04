@@ -3,20 +3,16 @@ package Persona.infraestructure.repository;
 import Persona.domain.Persona;
 import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.patterns.PerObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.concurrent.atomic.AtomicReference;
 
 
 @Slf4j
@@ -54,7 +50,7 @@ public class PersonaServiceImpl implements PersonaService {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Persona> query= cb.createQuery(Persona.class);
         Root<Persona> root = query.from(Persona.class);
-
+        AtomicReference<String> Order = new AtomicReference<>("");
         List<Predicate> predicates = new ArrayList<>();
         condiciones.forEach((field,value) ->
         {
@@ -81,11 +77,18 @@ public class PersonaServiceImpl implements PersonaService {
                             break;
                     }
                     break;
+                case "orderBy":
+                    Order.set(field);
             }
 
         });
+        if(Order.get().equals("")){
+            log.info("----- Se procede a hacer una consulta parametrizada a la entidad Persona -----");
+            query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));
+            return entityManager.createQuery(query).getResultList();
+        }
         log.info("----- Se procede a hacer una consulta parametrizada a la entidad Persona -----");
-        query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));
+        query.select(root).where(predicates.toArray(new Predicate[predicates.size()])).orderBy(cb.asc(root.get(Order.get())));
         return entityManager.createQuery(query).getResultList();
     }
 }

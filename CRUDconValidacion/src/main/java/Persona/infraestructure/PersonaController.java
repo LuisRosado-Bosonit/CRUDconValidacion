@@ -50,7 +50,8 @@ public class PersonaController  {
                                                  @RequestParam(required = false, name = "name") String name,
                                                  @RequestParam(required = false, name = "surname") String surname,
                                                  @RequestParam(required = false, name = "created_date") @DateTimeFormat(pattern = "dd-MM-yyyy") Date created_date,
-                                                 @RequestParam(required = false, name = "condicion") String dateCondition) {
+                                                 @RequestParam(required = false, name = "condicion") String dateCondition,
+                                                 @RequestParam(required = false, name = "order") String orderBy) {
         HashMap<String, Object> data=new HashMap<>();
 
         if (usuario!=null)
@@ -63,6 +64,9 @@ public class PersonaController  {
             data.put("created_date",created_date);
             data.put("dateCondition",dateCondition) ;
         }
+        if (orderBy != null)
+            data.put("orderBy",orderBy);
+
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(persona.getData(data));
     }
 }
