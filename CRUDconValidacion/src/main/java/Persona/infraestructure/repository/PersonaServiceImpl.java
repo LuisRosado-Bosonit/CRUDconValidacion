@@ -73,10 +73,10 @@ public class PersonaServiceImpl implements PersonaService {
                     String dateCondition=(String) condiciones.get("dateCondition");
                     switch (dateCondition)
                     {
-                        case "LESS_THAN":
+                        case "less":
                             predicates.add(cb.lessThan(root.<Date>get(field),(Date)value));
                             break;
-                        default: GREATER_THAN:
+                        default:
                             predicates.add(cb.greaterThan(root.<Date>get(field),(Date)value));
                             break;
                     }

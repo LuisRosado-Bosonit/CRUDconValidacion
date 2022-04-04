@@ -49,7 +49,8 @@ public class PersonaController  {
     public ResponseEntity<List<Persona>> getData(@RequestParam(required = false, name = "usuario") String usuario,
                                                  @RequestParam(required = false, name = "name") String name,
                                                  @RequestParam(required = false, name = "surname") String surname,
-                                                 @RequestParam(required = false, name = "created_date") @DateTimeFormat(pattern = "dd-MM-yyyy") Date created_date) {
+                                                 @RequestParam(required = false, name = "created_date") @DateTimeFormat(pattern = "dd-MM-yyyy") Date created_date,
+                                                 @RequestParam(required = false, name = "condicion") String dateCondition) {
         HashMap<String, Object> data=new HashMap<>();
 
         if (usuario!=null)
@@ -58,8 +59,10 @@ public class PersonaController  {
             data.put("name",name);
         if (surname!=null)
             data.put("address",surname);
-        if (created_date!=null)
+        if (created_date!=null){
             data.put("created_date",created_date);
+            data.put("dateCondition",dateCondition) ;
+        }
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(persona.getData(data));
     }
 }
