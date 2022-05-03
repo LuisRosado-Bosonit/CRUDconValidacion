@@ -1,7 +1,7 @@
-package Persona.infraestructure.controller.dto.output;
+package com.example.App.Application.Persona.infraestructure.controller.dto.output;
 
-import Persona.domain.Persona;
-import Persona.infraestructure.controller.dto.input.inputPersonaDTO;
+import com.example.App.Application.Persona.domain.Persona;
+import com.example.App.Application.Persona.infraestructure.controller.dto.input.inputPersonaDTO;
 import lombok.Data;
 
 import java.util.Date;
@@ -25,9 +25,9 @@ public class outputPersonaDTO {
         this.company_email = origen.getSurname();
         this.city = origen.getCity();
         this.active = origen.isActive();
-        this.created_date = origen.getCreated_date();
-        this.imagen_url = origen.getImagen_url();
-        this.termination_date = origen.getTermination_date();
+        this.created_date = origen.getCreatedDate();
+        this.imagen_url = origen.getImagenUrl();
+        this.termination_date = origen.getTerminationDate();
         return this;
     }
 

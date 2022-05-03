@@ -1,4 +1,4 @@
-package Persona.domain;
+package com.example.App.Application.Persona.domain;
 
 import lombok.Data;
 
@@ -15,9 +15,9 @@ import java.util.Date;
 @Data
 public class Persona {
     @Id
-    @Column(name = "id_persona", nullable = false)
+    @Column(name = "idPersona", nullable = false)
     @GeneratedValue
-    private int id_persona;
+    private int idPersona;
 
     @Column(name="usuario", nullable = false)
             @Size(min =6 ,max=10 , message = "La longitud del usuario debe ser de entre 6 y 10 caracteres")
@@ -33,11 +33,11 @@ public class Persona {
 
     @Email
             @NotNull
-    private String company_email;
+    private String companyEmail;
 
     @NotNull
             @Email
-    private String persona_email;
+    private String personaEmail;
 
     @NotNull
     private String city;
@@ -46,9 +46,9 @@ public class Persona {
     boolean active;
 
     @NotNull
-    private Date created_date;
+    private Date createdDate;
 
-    private String imagen_url;
+    private String imagenUrl;
 
-    private Date termination_date;
+    private Date terminationDate;
 }

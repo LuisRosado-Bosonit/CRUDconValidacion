@@ -1,6 +1,6 @@
-package Persona.infraestructure.controller.dto.input;
+package com.example.App.Application.Persona.infraestructure.controller.dto.input;
 
-import Persona.domain.Persona;
+import com.example.App.Application.Persona.domain.Persona;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -37,11 +37,11 @@ public class inputPersonaDTO {
         if(algunoNulo(this))throw new Exception("Faltan parámetros por especificar");
         mariano.setUsuario(this.usuario);
         mariano.setPassword(this.password);
-        mariano.setCompany_email(this.company_email);
-        mariano.setPersona_email(this.persona_email);
+        mariano.setCompanyEmail(this.company_email);
+        mariano.setPersonaEmail(this.persona_email);
         mariano.setCity(this.city);
         mariano.setActive(this.active);
-        mariano.setCreated_date(this.created_date);
+        mariano.setCreatedDate(this.created_date);
 
         return mariano;
     }
