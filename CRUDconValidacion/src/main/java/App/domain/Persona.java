@@ -9,7 +9,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Optional;
 
 @Entity
 @Data
@@ -58,4 +57,6 @@ public class Persona {
     private String imagen_url;
 
     private Date termination_date;
+
+    private boolean admin;
 }

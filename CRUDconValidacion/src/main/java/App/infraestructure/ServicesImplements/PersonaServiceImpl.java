@@ -36,4 +36,17 @@ public class PersonaServiceImpl implements PersonaService {
         log.warn("--------- Se ha realizado una consulta completa de la tabla ---------");
         return repositorio.findAll();
     }
+
+    @Override
+    public boolean auth(String nick, String pwd) {
+        Persona p;
+        p = new Persona();
+        log.warn("--------- Se está comprobando la existencia de un usuario y contraseña de la tabla Persona ---------");
+        p = repositorio.findUserAndPass(nick,pwd);
+        if(p != null){
+           // System.out.println("----------EL RESULTADO DE BUSCAR USUARIO Y CONTRASEÑA ES "+ p );
+            return p.isAdmin();
+        }
+        return false;
+    }
 }

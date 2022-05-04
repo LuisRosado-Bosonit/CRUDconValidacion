@@ -14,4 +14,6 @@ public interface PersonaService {
     public inputPersonaDTO guardarPersona(inputPersonaDTO dto) throws Exception;
 
     public List<Persona> showAll();
+
+    public boolean auth(String nick, String pwd);
 }

@@ -25,6 +25,8 @@ public class inputPersonaDTO {
     private String imagen_url;
     private Date termination_date;
 
+    private boolean Admin;
+
 
     public Persona transformDTOtoPersona () throws Exception {
         Persona mariano = new Persona();
@@ -42,6 +44,7 @@ public class inputPersonaDTO {
         mariano.setCity(this.city);
         mariano.setActive(this.active);
         mariano.setCreated_date(this.created_date);
+        mariano.setAdmin(this.Admin);
 
         return mariano;
     }
